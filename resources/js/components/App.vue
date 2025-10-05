@@ -117,8 +117,7 @@
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="footer_iner text-center">
-                                <p>2024 © <a href="https://itr.am/"> <i class="ti-heart"></i> </a><a
-                                    href="https://itr.am/">ITResources</a></p>
+
                             </div>
                         </div>
                     </div>

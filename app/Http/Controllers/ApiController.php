@@ -273,7 +273,7 @@ class ApiController extends Controller
         }
 
         try {
-            Mail::to('hayk.qocharyan.99@mail.ru')->send(new ContactMail($data));
+            Mail::to('armorbita@gmail.com')->send(new ContactMail($data));
             return Response::json(['isSuccess' => true], 200);
         } catch (\Exception $e) {
             return Response::json(['isSuccess' => false, 'message' => $e->getMessage()], 500);

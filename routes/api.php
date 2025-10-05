@@ -5,7 +5,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 
-Route::group(['prefix' => '/', 'middleware' => 'blockcors'], function () {
+Route::group(['prefix' => '/'], function () { //, 'middleware' => 'blockcors'
 
     Route::group(['middleware' => ['loggable']], function () {
 

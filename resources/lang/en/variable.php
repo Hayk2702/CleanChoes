@@ -266,5 +266,6 @@ return [
     'publish' => 'Publish',
     'unpublished' => 'Unpublished',
     'unpublish' => 'Unpublish',
+    'comment' => 'Comment',
 
 ];

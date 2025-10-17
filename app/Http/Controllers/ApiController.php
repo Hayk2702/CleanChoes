@@ -112,7 +112,7 @@ class ApiController extends Controller
     {
         try {
 
-            $workPhotos = WorkPhotos::select('category_id', 'image_path_left', 'image_path_right')->get();
+            $workPhotos = WorkPhotos::select('category_id', 'image_path_left')->get();
             return Response::json($workPhotos);
         } catch (\Exception $e) {
             return Response::json([], 400);
@@ -181,6 +181,11 @@ class ApiController extends Controller
         } elseif (strlen($request->name) > 255) {
             $errors['name'][] = 'Name must not exceed 255 characters.';
         }
+        if (!$request->filled('title')) {
+            $errors['name'][] = 'Title is required.';
+        } elseif (strlen($request->title) > 255) {
+            $errors['name'][] = 'Title must not exceed 255 characters.';
+        }
 
         if (!$request->filled('email')) {
             $errors['email'][] = 'Email is required.';
@@ -202,6 +207,24 @@ class ApiController extends Controller
             $errors['rate'][] = 'Rate must be between 1 and 5.';
         }
 
+        if ($request->hasFile('photo')) {
+            $file = $request->file('photo');
+
+            if (!$file->isValid()) {
+                $errors['photo'][] = 'Uploaded file is not valid.';
+            } else {
+                // Size limit: 15 MB
+                if ($file->getSize() > 15 * 1024 * 1024) {
+                    $errors['photo'][] = 'Photo must be 15 MB or smaller.';
+                }
+                // Allowed MIME types
+                $allowed = ['image/jpeg', 'image/png', 'image/webp'];
+                if (!in_array($file->getMimeType(), $allowed, true)) {
+                    $errors['photo'][] = 'Photo must be a JPG, PNG, or WEBP image.';
+                }
+            }
+        }
+
         // return errors if any
         if (!empty($errors)) {
             return Response::json($errors, 422);
@@ -211,9 +234,16 @@ class ApiController extends Controller
         try {
             $reviews = new Reviews();
             $reviews->name = $request->name;
+            $reviews->title = $request->title;
             $reviews->email = $request->email;
             $reviews->comment = $request->comment;
             $reviews->rate = $request->rate;
+
+            if ($request->hasFile('photo')) {
+                $path = $request->file('photo')->store('reviews', 'public');
+                $reviews->photo_path = "/storage/" . $path;
+            }
+
             $reviews->save();
             DB::commit();
             return Response::json(['isSuccess' => true], 200);

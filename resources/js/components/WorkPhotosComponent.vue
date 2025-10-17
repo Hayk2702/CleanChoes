@@ -102,16 +102,16 @@
                             </b-col>
                         </b-row>
 
-                        <b-row class="mb-2">
-                            <b-col class="blockInput">
-                                <label class="mb-1">{{ __('variable.image') || 'Right image' }}</label>
-                                <b-form-file @change="onRightChange" :state="rightFile ? true : null" accept="image/*" browse-text="Choose"/>
-                                <div v-if="rightPreview" class="mt-2">
-                                    <img :src="rightPreview" style="max-width:200px; max-height:140px; object-fit:cover;">
-                                </div>
-                                <small v-if="errors['image_path_right']" class="error-msg">{{ errors['image_path_right'] }}</small>
-                            </b-col>
-                        </b-row>
+<!--                        <b-row class="mb-2">-->
+<!--                            <b-col class="blockInput">-->
+<!--                                <label class="mb-1">{{ __('variable.image') || 'Right image' }}</label>-->
+<!--                                <b-form-file @change="onRightChange" :state="rightFile ? true : null" accept="image/*" browse-text="Choose"/>-->
+<!--                                <div v-if="rightPreview" class="mt-2">-->
+<!--                                    <img :src="rightPreview" style="max-width:200px; max-height:140px; object-fit:cover;">-->
+<!--                                </div>-->
+<!--                                <small v-if="errors['image_path_right']" class="error-msg">{{ errors['image_path_right'] }}</small>-->
+<!--                            </b-col>-->
+<!--                        </b-row>-->
                     </b-container>
 
                     <template #modal-footer>
@@ -154,8 +154,7 @@ export default {
             fields: [
                 { key: 'id',               label: this.__('variable.id'), sortable: true },
                 { key: 'category',         label: this.__('variable.category') || 'Category', sortable: false },
-                { key: 'image_path_left',  label: (this.__('variable.image')) + ' (L)', sortable: false },
-                { key: 'image_path_right', label: (this.__('variable.image')) + ' (R)', sortable: false },
+                { key: 'image_path_left',  label: (this.__('variable.image')) , sortable: false },
                 { key: 'actions',          label: this.__('variable.action'), sortable: false },
             ],
             isBusy: false,

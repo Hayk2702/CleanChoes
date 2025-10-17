@@ -64,6 +64,14 @@
                                         {{ item.status ? (__('variable.unpublish') || 'Unpublish') : (__('variable.publish') || 'Publish') }}
                                     </b-button>
                                 </template>
+
+                                <template #cell(title)="{ item }">
+                                    <strong>{{ item.title || '—' }}</strong>
+                                </template>
+
+                                <template #cell(image)="{ item }">
+                                    <img v-if="item.photo_path" :src="item.photo_path" alt="left" style="max-height:60px; max-width:120px; object-fit:cover;">
+                                </template>
                             </b-table>
                         </div>
                     </div>
@@ -109,14 +117,17 @@ export default {
             sortDesc: true,
 
             fields: [
-                { key: 'id',       label: this.__('variable.id'), sortable: true },
-                { key: 'name',     label: this.__('variable.name'), sortable: true },
-                { key: 'email',    label: this.__('variable.email'), sortable: true },
-                { key: 'rate',     label: this.__('variable.rate') || 'Rate', sortable: true },
-                { key: 'comment',  label: this.__('variable.comment') || 'Comment', sortable: false },
-                { key: 'status',   label: this.__('variable.status') || 'Status', sortable: true },
-                { key: 'actions',  label: this.__('variable.action'), sortable: false },
+                { key: 'id', label: this.__('variable.id'), sortable: true },
+                { key: 'title', label: this.__('variable.title') || 'Title', sortable: true },
+                { key: 'name', label: this.__('variable.name'), sortable: true },
+                { key: 'email', label: this.__('variable.email'), sortable: true },
+                { key: 'rate', label: this.__('variable.rate') || 'Rate', sortable: true },
+                { key: 'comment', label: this.__('variable.comment') || 'Comment', sortable: false },
+                { key: 'status', label: this.__('variable.status') || 'Status', sortable: true },
+                { key: 'image', label: this.__('variable.image') || 'Image', sortable: false },
+                { key: 'actions', label: this.__('variable.action'), sortable: false },
             ],
+
 
             items: [],
         };
@@ -173,6 +184,13 @@ export default {
                     }
                 })
                 .catch(() => {});
+        },
+
+        getPhotoUrl(path) {
+            if (!path) return null;
+            return path.startsWith('http')
+                ? path
+                : `${window.location.origin}/${path}`;
         },
     }
 }

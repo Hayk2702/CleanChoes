@@ -187,10 +187,10 @@ class ApiController extends Controller
             $errors['name'][] = 'Title must not exceed 255 characters.';
         }
 
-        if (!$request->filled('email')) {
-            $errors['email'][] = 'Email is required.';
-        } elseif (!filter_var($request->email, FILTER_VALIDATE_EMAIL)) {
-            $errors['email'][] = 'Email format is invalid.';
+        if (!$request->filled('email') || (!filter_var($request->email, FILTER_VALIDATE_EMAIL))) {
+            $email = null;
+        } else {
+            $email = $request->email;
         }
 
         if (!$request->filled('comment')) {
@@ -235,7 +235,7 @@ class ApiController extends Controller
             $reviews = new Reviews();
             $reviews->name = $request->name;
             $reviews->title = $request->title;
-            $reviews->email = $request->email;
+            $reviews->email = $email;
             $reviews->comment = $request->comment;
             $reviews->rate = $request->rate;
 
@@ -257,7 +257,7 @@ class ApiController extends Controller
     public function getReviews(Request $request)
     {
         try {
-            $reviews = Reviews::where('status',true)->get();
+            $reviews = Reviews::where('status', true)->get();
             return Response::json($reviews);
         } catch (\Exception $e) {
             return Response::json([], 400);
@@ -289,11 +289,11 @@ class ApiController extends Controller
         }
 
         $data = [
-            'name'    => $request->name,
-            'email'   => $request->email ?? null,
-            'phone'   => $request->phone,
+            'name' => $request->name,
+            'email' => $request->email ?? null,
+            'phone' => $request->phone,
             'comment' => $request->comment ?? null,
-            'photo'   => null,
+            'photo' => null,
         ];
 
         // handle optional photo upload

@@ -16,7 +16,7 @@
 
 .form_title {
     color: white;
-    background-color: #1c356d;
+    background-color: #214951;
     font-size: 30px;
     text-align: center;
     height: 75px;
@@ -181,7 +181,7 @@ div:has(> .btnGroupAdd) {
 }
 
 .btnDead {
-    background-color: #1c356d;
+    background-color: #214951;
     color: white;
     min-height: 40px;
     min-width: 200px;
@@ -199,7 +199,7 @@ div:has(> .btnDead) {
 }
 
 .btnShowHide {
-    background-color: #1c356d;
+    background-color: #214951;
     color: white;
     min-height: 40px;
 }
@@ -215,7 +215,7 @@ div:has(> .btnShowHide) {
 }
 
 .btnIll {
-    background-color: #1c356d;
+    background-color: #214951;
     color: white;
     padding: 7px;
     min-height: 40px;
@@ -420,7 +420,7 @@ div:has(> .searchInpEar) {
 .page-item.active .page-link {
     z-index: 3;
     color: #fff;
-    background-color: #1c356d;
+    background-color: #214951;
     border-color: #1761fd;
 }
 
@@ -430,7 +430,7 @@ div:has(> .searchInpEar) {
 
 .modal-header.bg-custom.text-white {
     color: white !important;
-    background-color: #1c356d;
+    background-color: #214951;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -890,14 +890,17 @@ a.btn_reject_a_position:hover, button.btn_reject_a_position:hover {
 }
 
 .table_grid > tbody > tr {
-    width: 26%;
+    width: 25%;
     height: 100%;
-    box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.2);
-    border-radius: 10px;
+    box-shadow: 0 0 8px 0px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
     cursor: pointer;
-    margin: 20px;
+    margin: 15px;
     word-wrap: break-word;
     position: relative;
+    td:last-child {
+        border-bottom: none !important;
+    }
 }
 
 .svgOpacity {
@@ -1227,7 +1230,7 @@ input[type=number] {
     width: 5%;
     border: none;
     cursor: pointer;
-    background: #1c356d;
+    background: #214951;
     border-radius: 0 5px 5px 0;
     box-shadow: inset 0 1px 3px rgb(0 0 0 / 50%);
 }
@@ -1607,7 +1610,7 @@ a.a_position:hover, button.a_position:hover {
 
 .drag__position {
     margin-inline-start: 20px;
-    background-color: #1c356d;
+    background-color: #214951;
     color: white;
     font-size: 18px;
     font-weight: bold;

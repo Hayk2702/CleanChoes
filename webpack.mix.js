@@ -11,6 +11,7 @@ const mix = require('laravel-mix');
  |
  */
 
+mix.webpackConfig({     output: {         hashFunction: 'sha256',     }, });
 mix.js('resources/js/app.js', 'public/js')
     .vue()
     .sass('resources/sass/app.scss', 'public/css');

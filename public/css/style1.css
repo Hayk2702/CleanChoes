@@ -3861,7 +3861,7 @@ table.dataTable {
 .sidebar .logo {
     margin: 0;
     background: #efefef;
-    padding: 24px;
+    padding: 20px 0;
     margin-bottom: 0
 }
 
@@ -4383,7 +4383,7 @@ body::-webkit-scrollbar {
 }
 
 .sidebar.dark_sidebar {
-    background: #1c356d
+    background: #214951
 }
 
 .sidebar.dark_sidebar .logo {
@@ -11701,7 +11701,7 @@ table.lms_table_active3.dataTable thead .sorting_asc::before, table.lms_table_ac
     width: 350px;
     height: 150px;
     border-radius: 10px;
-    background: #1c356d;
+    background: #214951;
     margin: 20px;
     display: flex;
     align-items: center;
@@ -11810,7 +11810,7 @@ table.lms_table_active3.dataTable thead .sorting_asc::before, table.lms_table_ac
 }
 
 .sidebar.mini_sidebar #sidebar_menu > li > a {
-    background: #1c356d;
+    background: #214951;
     padding-left: 0;
     display: grid;
     grid-template-columns: 44px auto !important
@@ -12000,7 +12000,7 @@ table.lms_table_active3.dataTable thead .sorting_asc::before, table.lms_table_ac
 }
 
 .sidebar.mini_sidebar.dark_sidebar #sidebar_menu > li ul {
-    background: #1c356d;
+    background: #214951;
     opacity: 1
 }
 
@@ -13060,7 +13060,7 @@ table.lms_table_active3.dataTable thead .sorting_asc::before, table.lms_table_ac
 }
 
 .side_bar_menu_button{
-    background: #1c356d;
+    background: #214951;
 }
 .side_bar_menu_button:hover{
     background: #72808d;
